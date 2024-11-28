@@ -1,3 +1,5 @@
+import { KeywordExtractionResult, PlagiarismResult, TextAnalysis } from "@/types/types";
+
 export const analyzeText = (text: string): TextAnalysis => {
   const words = text.trim().split(/\s+/).filter(word => word.length > 0);
   const sentences = text.split(/[.!?]+/).filter(Boolean);

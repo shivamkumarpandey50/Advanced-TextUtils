@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import {
   Type,
@@ -51,13 +51,13 @@ const textFeatures = [
 ];
 
 export const HomePage = () => {
-  const [inputText, setInputText] = useState("");
-  const [processedText, setProcessedText] = useState("");
+  // const [inputText, setInputText] = useState("");
+  // const [processedText, setProcessedText] = useState("");
   const router = useRouter();
 
-  const handleTextProcess = () => {
-    setProcessedText(inputText.toUpperCase());
-  };
+  // const handleTextProcess = () => {
+  //   setProcessedText(inputText.toUpperCase());
+  // };
 
   const handleGetStarted = () => {
     router.push("/tools");

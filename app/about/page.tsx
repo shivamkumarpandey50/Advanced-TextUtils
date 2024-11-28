@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Book, Users, Target, Award } from "lucide-react";
+import { Book, Users, Target, Award } from "lucide-react";
 
 export default function AboutPage() {
   return (

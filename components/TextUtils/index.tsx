@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { TextAnalyzer } from "./TextAnalyzer";
-import { KeywordExtractor } from "./KeywordExtractor";
-import { PlagiarismChecker } from "./PlagiarismChecker";
+import { TextAnalyzer } from "../TextAnalyzer";
+import { KeywordExtractor } from "../KeywordExtractor";
+import { PlagiarismChecker } from "../PlagiarismChecker";
 import { transformations } from "./transformations";
 import {
   Copy,
