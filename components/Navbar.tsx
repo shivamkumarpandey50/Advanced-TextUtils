@@ -1,9 +1,10 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import {
   Moon,
   Sun,
   Palette,
-  //   Check,
   Menu,
   X,
   Laptop,
@@ -18,7 +19,6 @@ import {
   Shield,
   Coffee,
 } from "lucide-react";
-// import Image from "next/image";
 
 // Theme configuration
 const themes = [
@@ -126,10 +126,10 @@ const themes = [
     name: "Cozy",
     icon: <Coffee />,
     colors: {
-      background: "bg-brown-50",
-      text: "text-brown-900",
-      primary: "bg-brown-600 text-white",
-      secondary: "bg-brown-100 text-brown-800",
+      background: "bg-amber-50",
+      text: "text-amber-900",
+      primary: "bg-amber-600 text-white",
+      secondary: "bg-amber-100 text-amber-800",
     },
   },
   {
@@ -154,38 +154,23 @@ const themes = [
   },
 ];
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(themes[0]);
 
-  // Apply theme to body
   useEffect(() => {
-    document.body.className = `
-      ${currentTheme.colors.background} 
-      ${currentTheme.colors.text}
-    `;
+    document.body.className = `${currentTheme.colors.background} ${currentTheme.colors.text}`;
   }, [currentTheme]);
 
   const navItems = [
     { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
     { label: "Tools", href: "#tools" },
-    { label: "Contact", href: "#contact" },
+    { label: "Features", href: "#features" },
+    { label: "About", href: "#about" },
   ];
 
-  const handleThemeChange = (
-    theme: React.SetStateAction<{
-      name: string;
-      icon: React.JSX.Element;
-      colors: {
-        background: string;
-        text: string;
-        primary: string;
-        secondary: string;
-      };
-    }>
-  ) => {
+  const handleThemeChange = (theme: typeof themes[0]) => {
     setCurrentTheme(theme);
     setIsThemeOpen(false);
   };
@@ -193,20 +178,12 @@ const Navbar = () => {
   return (
     <header className={`sticky top-0 z-50 ${currentTheme.colors.secondary}`}>
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
         <div className="flex items-center">
-          {/* <Image
-            width={"20"}
-            src="/api/placeholder/50/50"
-            alt="TextUtils Logo"
-            className="h-10 w-10 mr-3 rounded-full"
-          /> */}
           <span className={`text-2xl font-bold ${currentTheme.colors.text}`}>
             TextUtils
           </span>
         </div>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
             <a
@@ -218,7 +195,6 @@ const Navbar = () => {
             </a>
           ))}
 
-          {/* Theme Selector */}
           <div className="relative">
             <button
               onClick={() => setIsThemeOpen(!isThemeOpen)}
@@ -238,11 +214,7 @@ const Navbar = () => {
                       ${theme.colors.background} 
                       ${theme.colors.text}
                       hover:scale-110 transition-transform
-                      ${
-                        currentTheme.name === theme.name
-                          ? "ring-2 ring-blue-500"
-                          : ""
-                      }
+                      ${currentTheme.name === theme.name ? "ring-2 ring-blue-500" : ""}
                     `}
                     title={theme.name}
                   >
@@ -254,7 +226,6 @@ const Navbar = () => {
           </div>
         </nav>
 
-        {/* Mobile Menu Toggle */}
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -264,27 +235,13 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
-          <div
-            className={`fixed inset-0 z-50 md:hidden ${currentTheme.colors.background}`}
-          >
+          <div className={`fixed inset-0 z-50 md:hidden ${currentTheme.colors.background}`}>
             <div className="container mx-auto px-4 py-6">
-              {/* Mobile Header */}
               <div className="flex justify-between items-center mb-8">
-                <div className="flex items-center">
-                  {/* <Image
-                    width={"20"}
-                    src=""
-                    alt="TextUtils Logo"
-                    className="h-10 w-10 mr-3 rounded-full"
-                  /> */}
-                  <span
-                    className={`text-2xl font-bold ${currentTheme.colors.text}`}
-                  >
-                    TextUtils
-                  </span>
-                </div>
+                <span className={`text-2xl font-bold ${currentTheme.colors.text}`}>
+                  TextUtils
+                </span>
                 <button
                   onClick={() => setIsOpen(false)}
                   className={`${currentTheme.colors.text} focus:outline-none`}
@@ -293,7 +250,6 @@ const Navbar = () => {
                 </button>
               </div>
 
-              {/* Mobile Nav Links */}
               <nav className="space-y-6">
                 {navItems.map((item) => (
                   <a
@@ -306,7 +262,6 @@ const Navbar = () => {
                   </a>
                 ))}
 
-                {/* Mobile Theme Selector */}
                 <div className="mt-4">
                   <button
                     onClick={() => setIsThemeOpen(!isThemeOpen)}
@@ -326,11 +281,7 @@ const Navbar = () => {
                             ${theme.colors.background} 
                             ${theme.colors.text}
                             hover:scale-110 transition-transform
-                            ${
-                              currentTheme.name === theme.name
-                                ? "ring-2 ring-blue-500"
-                                : ""
-                            }
+                            ${currentTheme.name === theme.name ? "ring-2 ring-blue-500" : ""}
                           `}
                           title={theme.name}
                         >
@@ -348,5 +299,3 @@ const Navbar = () => {
     </header>
   );
 };
-
-export default Navbar;

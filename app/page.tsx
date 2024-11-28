@@ -1,8 +1,5 @@
-import MainPage from "./(components)/textUtils/page";
+import { HomePage } from "@/components/HomePage";
+
 export default function Home() {
-  return (
-    <>
-      <MainPage />
-    </>
-  );
+  return <HomePage />;
 }
